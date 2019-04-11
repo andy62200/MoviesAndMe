@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Image } from 'react-native'
+import { getImageFromApi } from '../API/TMDBApi'
 
 class FilmItem  extends React.Component {
   render() {
@@ -7,6 +8,10 @@ class FilmItem  extends React.Component {
     return (
       <View style={styles.main_container}>
         <View style={styles.image_container}>
+        <Image
+          style={styles.image}
+          source={{uri: getImageFromApi(film.poster_path)}}
+        />
         </View>
         <View style={styles.global_container}>
           <View style={styles.header_container}>
@@ -35,8 +40,10 @@ const styles = StyleSheet.create({
     padding: 5
   },
   image_container: {
-    flex: 1,
-    backgroundColor: 'gray'
+    flex: 1
+  },
+  image: {
+    flex: 1
   },
   global_container: {
     flexDirection: 'column',
